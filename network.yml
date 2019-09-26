@@ -3,6 +3,10 @@ Parameters:
   EnvironmentName:
     Type: String
 
+  VpcCIDR:
+    Type: String
+    Default: 10.0.0.0/16
+
 Resources:
   #instance profile contains the IAM Role name(s) that we want to associate to our auto scaling EC2 Servers
   ProfileWithRolesForOurApp:
@@ -19,5 +23,15 @@ Resources:
           cd /var/www/html
           aws s3 cp s3://udacity-demo-1/udacity.zip .
           unzip -o udacity.zip
+
+  VPC:
+    Type: "AWS::EC2::VPC"
+    Properties:
+      CidrBlock: !Ref VpcCIDR
+      EnableDnsHostnames: true
+      Tags:
+        - Key: Name
+          Value: !Sub ${EnvironmentName}-VPC
+  
 Outputs: 
   #Bonus points for useful outputs!
