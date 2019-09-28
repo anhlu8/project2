@@ -1,4 +1,9 @@
 [{
-    "ParameterKey": "EnvironmentName",
-    "ParameterValue": "project"
-}]
+        "ParameterKey": "EnvironmentName",
+        "ParameterValue": "Project"
+    },
+    {
+        "ParameterKey": "VpcCIDR",
+        "ParameterValue": "10.0.0.0/16"
+    }
+]
